@@ -1,0 +1,8 @@
+D101, Sunil Motors, 0771234567, Malabe
+D102|Kaduwela Spares Hub|0719876543|Kaduwela
+D103; Ranatunga Auto; ; Pittugala
+D104,  Maharagama Tuk Parts, 0705556666 ,Maharagama
+D105|Nimal & Sons|0778889999| Malabe
+D106 ; Athurugiriya Auto ; 0721112222 ; Athurugiriya
+D107, Koswatta Three-Wheelers, , Koswatta
+D108|Weliweriya Spares| 0764445555 |Weliweriya

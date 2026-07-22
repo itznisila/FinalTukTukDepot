@@ -1,0 +1,10 @@
+P001, Bajaj 4-Stroke Piston, Bajaj, Rs. 4500.00, 15, Engine, 2023-10-12, piston4s.jpg
+P002|TVS King Brake Pad|TVS|1250|8|Brakes|12/05/2023|brakepad.png
+P003; 205/50-10 Tyre ; ; 6500.00; 24; Bodywork; Oct 15, 2023;
+P004| Spark Plug NGK | NGK | Rs850 | 50 | electrical | 2024-01-05 | spark.jpg
+P005,Clutch Cable Bajaj RE|Bajaj; 950.00, 12 , ENGINE , 01-02-2024 , cl_cable.jpg
+P006 ; Headlight Bulb 12V ;  ; Rs. 450 | 30 ; ELECTRICAL ; 2023/11/20 ; hl_bulb.jpg
+P007, 3-Wheeler Canopy Cover, Local, 8500.50, 5, BODYWORK, 15-Aug-2023, canopy.png
+P008|Piaggio Ape Filter|Piaggio|Rs.1100.00| 0 | Engine | 2024-02-28 | filter_ape.jpeg
+P009,  Ignition Coil 2-Stroke , Bajaj , 2200 , 18 ; electrical ; 2023-09-01 ;
+P010| Rear View Mirror | ; 800.00 | 45 | Bodywork | 10/10/2023 | mirror.png
