@@ -33,6 +33,10 @@ public class Dealer {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getLocation() {
         return location;
     }
