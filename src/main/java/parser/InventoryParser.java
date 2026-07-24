@@ -111,5 +111,12 @@ public class InventoryParser {
         }
     }
 
+    private String normalizeCategory(String rawCategory) {
+        String lower = rawCategory.trim().toLowerCase();
+        if (lower.isEmpty()) {
+            return "Uncategorized";
+        }
+        return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
+    }
 
 }
