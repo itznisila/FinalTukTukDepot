@@ -29,4 +29,32 @@ public class DealerParser {
         for (int i = 0; i < fields.length; i++) {
             fields[i] = fields[i].trim();
         }
+
+        String code;
+        if (fields.length > 0) {
+            code = fields[0];
+        } else {
+            code = "UNKNOWN";
+        }
+
+        String name;
+        if (fields.length > 1) {
+            name = fields[1];
+        } else {
+            name = "Unnamed Dealer";
+        }
+
+        String phone;
+        if (fields.length > 2 && !fields[2].isEmpty()) {
+            phone = fields[2];
+        } else {
+            phone = "No Phone";
+        }
+
+        String location;
+        if (fields.length > 3) {
+            location = fields[3];
+        } else {
+            location = "Unknown Location";
+        }
 }
