@@ -103,6 +103,13 @@ public class InventoryParser {
         }
     }
 
+    private int parseQuantity(String rawQuantity) {
+        try {
+            return Integer.parseInt(rawQuantity.trim());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
 
 
 }
