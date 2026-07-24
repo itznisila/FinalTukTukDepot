@@ -22,5 +22,7 @@ public class DealerParser {
         return dealers;
     }
 
-
+    private Dealer parseLine(String line) {
+        String delimiter = detectDelimiter(line);
+        String[] fields = line.split(java.util.regex.Pattern.quote(delimiter));
 }
