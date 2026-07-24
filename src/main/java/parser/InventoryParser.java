@@ -88,6 +88,19 @@ public class InventoryParser {
         } else {
             imagePath = "";
         }
+        return new Part(code, name, dealerName, price, quantity, category, dateAdded, imagePath);
+    }
+
+    private double parsePrice(String rawPrice) {
+        String cleaned = rawPrice.replace("Rs.", "").replace("Rs", "").trim();
+        if (cleaned.isEmpty()) {
+            return 0.0;
+        }
+        try {
+            return Double.parseDouble(cleaned);
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
     }
 
 
