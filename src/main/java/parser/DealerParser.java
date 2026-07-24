@@ -25,4 +25,8 @@ public class DealerParser {
     private Dealer parseLine(String line) {
         String delimiter = detectDelimiter(line);
         String[] fields = line.split(java.util.regex.Pattern.quote(delimiter));
+
+        for (int i = 0; i < fields.length; i++) {
+            fields[i] = fields[i].trim();
+        }
 }
