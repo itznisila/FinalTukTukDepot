@@ -23,4 +23,13 @@ public class InventoryParser {
         }
         return parts;
     }
+
+    private Part parseLine(String line) {
+        String protectedLine = line.replaceAll("(?<=[A-Za-z]{3}\\s\\d{1,2}),(?=\\s*\\d{4})", "§");
+        String[] fields = protectedLine.split("[,|;]", -1);
+
+    }
+
+
+
 }
