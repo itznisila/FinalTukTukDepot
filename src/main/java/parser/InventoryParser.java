@@ -4,6 +4,7 @@ import model.Part;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,62 @@ public class InventoryParser {
 
         for (int i = 0; i < fields.length; i++) {
             fields[i] = fields[i].trim();
+        }
+
+        String code;
+        if (fields.length > 0) {
+            code = fields[0];
+        } else {
+            code = "UNKNOWN";
+        }
+
+        String name;
+        if (fields.length > 1) {
+            name = fields[1];
+        } else {
+            name = "Unnamed Part";
+        }
+
+        String dealerName;
+        if (fields.length > 2 && !fields[2].isEmpty()) {
+            dealerName = fields[2];
+        } else {
+            dealerName = "Unknown Dealer";
+        }
+
+        double price;
+        if (fields.length > 3) {
+            price = parsePrice(fields[3]);
+        } else {
+            price = 0.0;
+        }
+
+        int quantity;
+        if (fields.length > 4) {
+            quantity = parseQuantity(fields[4]);
+        } else {
+            quantity = 0;
+        }
+
+        String category;
+        if (fields.length > 5) {
+            category = normalizeCategory(fields[5]);
+        } else {
+            category = "Uncategorized";
+        }
+
+        LocalDate dateAdded;
+        if (fields.length > 6) {
+            dateAdded = parseDate(fields[6].replace("§", ","));
+        } else {
+            dateAdded = LocalDate.now();
+        }
+
+        String imagePath;
+        if (fields.length > 7) {
+            imagePath = fields[7];
+        } else {
+            imagePath = "";
         }
     }
 
