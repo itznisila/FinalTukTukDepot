@@ -5,6 +5,7 @@ import model.Part;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,4 +120,26 @@ public class InventoryParser {
         return Character.toUpperCase(lower.charAt(0)) + lower.substring(1);
     }
 
+    private LocalDate parseDate(String rawDate) {
+        String cleaned = rawDate.trim();
+        String[] patterns = {
+                "yyyy-MM-dd",
+                "dd/MM/yyyy",
+                "yyyy/MM/dd",
+                "dd-MM-yyyy",
+                "dd-MMM-yyyy",
+                "MMM dd, yyyy"
+        };
+
+        for (String pattern : patterns) {
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern, java.util.Locale.ENGLISH);
+                return LocalDate.parse(cleaned, formatter);
+            } catch (Exception e) {
+                continue;
+            }
+        }
+
+        return LocalDate.now();
+    }
 }
