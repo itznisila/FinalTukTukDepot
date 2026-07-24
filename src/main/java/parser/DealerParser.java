@@ -57,4 +57,16 @@ public class DealerParser {
         } else {
             location = "Unknown Location";
         }
+        return new Dealer(code, name, phone, location);
+    }
+
+    private String detectDelimiter(String line) {
+        if (line.contains("|")) {
+            return "|";
+        } else if (line.contains(";")) {
+            return ";";
+        } else {
+            return ",";
+        }
+    }
 }
