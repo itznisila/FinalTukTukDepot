@@ -17,6 +17,12 @@ public class Part {
     private int lowStockThreshold;
 
     public Part(String code, String name, String dealerName, double price,
+                int quantity, String category, LocalDate dateAdded, String imagePath) {
+        this(code, name, dealerName, price, quantity, category, dateAdded, imagePath,
+                DEFAULT_LOW_STOCK_THRESHOLD);
+    }
+
+    public Part(String code, String name, String dealerName, double price,
                 int quantity, String category, LocalDate dateAdded, String imagePath, int lowStockThreshold) {
         this.code = code;
         this.name = name;
