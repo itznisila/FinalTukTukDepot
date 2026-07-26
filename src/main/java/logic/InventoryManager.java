@@ -52,6 +52,19 @@ public class InventoryManager {
         for (int i = 0; i < parts.size(); i++) {
             if (parts.get(i).getCode().equalsIgnoreCase(code)) {
 
+                if (updated.getPrice() <= 0) {
+                    System.out.println("Update rejected: price must be greater than 0");
+                    return false;
+                }
+
+                if (updated.getQuantity() < 0) {
+                    System.out.println("Update rejected: quantity cannot be negative");
+                    return false;
+                }
+
+                parts.set(i, updated);
+                System.out.println("Updated part: " + code);
+                return true;
             }
         }
         System.out.println("Update failed: part code '" + code + "' not found.");
