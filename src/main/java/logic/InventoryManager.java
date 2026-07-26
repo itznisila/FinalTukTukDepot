@@ -42,5 +42,9 @@ public class InventoryManager {
                 return false;
             }
         }
+
+        parts.add(p);
+        System.out.println("Added part: " + p.getCode());
+        return true;
     }
 }
