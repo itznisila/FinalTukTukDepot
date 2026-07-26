@@ -25,4 +25,10 @@ public class SearchFilter {
                     matches = false;
                 }
             }
+
+            if (matches && maxPrice != null) {
+                if (p.getPrice() > maxPrice) {
+                    matches = false;
+                }
+            }
 }
