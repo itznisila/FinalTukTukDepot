@@ -31,4 +31,18 @@ public class SearchFilter {
                     matches = false;
                 }
             }
+
+            if (matches && keyword != null && !keyword.isEmpty()) {
+                if (!p.getName().toLowerCase().contains(keyword.toLowerCase())) {
+                    matches = false;
+                }
+            }
+
+            if (matches) {
+                results.add(p);
+            }
+        }
+
+        return results;
+    }
 }
