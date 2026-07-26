@@ -49,7 +49,13 @@ public class InventoryManager {
     }
 
     public boolean updatePart(String code, Part updated) {
+        for (int i = 0; i < parts.size(); i++) {
+            if (parts.get(i).getCode().equalsIgnoreCase(code)) {
 
+            }
+        }
+        System.out.println("Update failed: part code '" + code + "' not found.");
+        return false;
     }
 
 }
