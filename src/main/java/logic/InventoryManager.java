@@ -27,7 +27,12 @@ public class InventoryManager {
         }
 
         if (p.getPrice() <= 0) {
-            System.out.println("Rejected: price must be greater than 0 (code=" + p.getCode() + ")");
+            System.out.println("Rejected: price must be greater than 0");
+            return false;
+        }
+
+        if (p.getQuantity() < 0) {
+            System.out.println("Rejected: quantity cannot be negative");
             return false;
         }
     }
