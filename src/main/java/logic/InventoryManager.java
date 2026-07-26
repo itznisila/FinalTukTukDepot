@@ -21,6 +21,9 @@ public class InventoryManager {
     }
 
     public boolean addPart(Part p) {
-
+        if (p==null) {
+            System.out.println("Cannot add null part");
+            return false;
+        }
     }
 }
