@@ -13,4 +13,10 @@ public class SearchFilter {
         for (int i = 0; i < parts.size(); i++) {
             Part p = parts.get(i);
             boolean matches = true;
+
+            if (category != null && !category.isEmpty()) {
+                if (!p.getCategory().equalsIgnoreCase(category)) {
+                    matches = false;
+                }
+            }
 }
