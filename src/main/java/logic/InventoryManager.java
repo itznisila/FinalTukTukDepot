@@ -12,4 +12,7 @@ public class InventoryManager {
         this.parts = new ArrayList<Part>();
     }
 
+    public InventoryManager(List<Part> parts) {
+        this.parts = parts;
+    }
 }
