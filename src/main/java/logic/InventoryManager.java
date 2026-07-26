@@ -25,5 +25,10 @@ public class InventoryManager {
             System.out.println("Cannot add null part");
             return false;
         }
+
+        if (p.getPrice() <= 0) {
+            System.out.println("Rejected: price must be greater than 0 (code=" + p.getCode() + ")");
+            return false;
+        }
     }
 }
