@@ -15,4 +15,8 @@ public class InventoryManager {
     public InventoryManager(List<Part> parts) {
         this.parts = parts;
     }
+
+    public List<Part> getParts() {
+        return parts;
+    }
 }
