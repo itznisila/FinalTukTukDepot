@@ -19,4 +19,10 @@ public class SearchFilter {
                     matches = false;
                 }
             }
+
+            if (matches && minPrice != null) {
+                if (p.getPrice() < minPrice) {
+                    matches = false;
+                }
+            }
 }
