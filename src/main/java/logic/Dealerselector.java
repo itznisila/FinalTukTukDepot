@@ -31,3 +31,21 @@ public class Dealerselector {
         }
         return selected;
     }
+
+    public void sortByLocation(List<Dealer> dealers) {
+        for (int i = 1; i < dealers.size(); i++) {
+            Dealer key = dealers.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && compareDealersByLocation(dealers.get(j), key) > 0) {
+                dealers.set(j + 1, dealers.get(j));
+                j--;
+            }
+            dealers.set(j + 1, key);
+        }
+    }
+
+    private int compareDealersByLocation(Dealer a, Dealer b) {
+        return a.getLocation().compareToIgnoreCase(b.getLocation());
+    }
+}
