@@ -67,10 +67,20 @@ public class InventoryManager {
                 return true;
             }
         }
-        System.out.println("Update failed: part code '" + code + "' not found.");
+        System.out.println("Update failed: part code not found.");
         return false;
     }
 
     public boolean deletePart(String code) {
+        for (int i = 0; i < parts.size(); i++) {
+            if (parts.get(i).getCode().equalsIgnoreCase(code)) {
+                parts.remove(i);
+                System.out.println("Deleted part: " + code);
+                return true;
+            }
+        }
+        System.out.println("Delete failed: part code");
+        return false;
+    }
 
 }
