@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 public class Part {
 
+    public static final int DEFAULT_LOW_STOCK_THRESHOLD = 10;
+
     private String code;
     private String name;
     private String dealerName;
@@ -12,9 +14,10 @@ public class Part {
     private String category;
     private LocalDate dateAdded;
     private String imagePath;
+    private int lowStockThreshold;
 
     public Part(String code, String name, String dealerName, double price,
-                int quantity, String category, LocalDate dateAdded, String imagePath) {
+                int quantity, String category, LocalDate dateAdded, String imagePath, int lowStockThreshold) {
         this.code = code;
         this.name = name;
         this.dealerName = dealerName;
@@ -23,6 +26,7 @@ public class Part {
         this.category = category;
         this.dateAdded = dateAdded;
         this.imagePath = imagePath;
+        this.lowStockThreshold = lowStockThreshold;
     }
     public String getCode() {
         return code;
@@ -86,5 +90,13 @@ public class Part {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public int getLowStockThreshold() {
+        return lowStockThreshold;
+    }
+
+    public void setLowStockThreshold(int lowStockThreshold) {
+        this.lowStockThreshold = lowStockThreshold;
     }
 }
