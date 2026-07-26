@@ -71,4 +71,6 @@ public class InventoryManager {
         return false;
     }
 
+    public boolean deletePart(String code) {
+
 }
