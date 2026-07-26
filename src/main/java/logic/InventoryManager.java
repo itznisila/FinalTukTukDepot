@@ -47,4 +47,9 @@ public class InventoryManager {
         System.out.println("Added part: " + p.getCode());
         return true;
     }
+
+    public boolean updatePart(String code, Part updated) {
+
+    }
+
 }
