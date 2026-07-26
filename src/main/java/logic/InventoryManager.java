@@ -90,4 +90,18 @@ public class InventoryManager {
         }
         return a.getCode().compareToIgnoreCase(b.getCode());
     }
+
+    public void sortByCategoryThenCode(List<Part> parts) {
+        for (int i = 1; i < parts.size(); i++) {
+            Part key = parts.get(i);
+            int j = i - 1;
+
+            while (j >= 0 && comparePartsForSort(parts.get(j), key) > 0) {
+                parts.set(j + 1, parts.get(j));
+                j--;
+            }
+            parts.set(j + 1, key);
+        }
+    }
+
 }
