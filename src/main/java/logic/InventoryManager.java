@@ -112,4 +112,11 @@ public class InventoryManager {
         return total;
     }
 
+    public double getTotalInventoryValue() {
+        double total = 0.0;
+        for (Part p : parts) {
+            total += p.getPrice() * p.getQuantity();
+        }
+        return total;
+    }
 }
