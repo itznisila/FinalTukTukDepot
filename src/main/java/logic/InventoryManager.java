@@ -104,4 +104,12 @@ public class InventoryManager {
         }
     }
 
+    public int getTotalItemCount() {
+        int total = 0;
+        for (Part p : parts) {
+            total += p.getQuantity();
+        }
+        return total;
+    }
+
 }
