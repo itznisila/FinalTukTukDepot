@@ -83,4 +83,11 @@ public class InventoryManager {
         return false;
     }
 
+    private int comparePartsForSort(Part a, Part b) {
+        int categoryCompare = a.getCategory().compareToIgnoreCase(b.getCategory());
+        if (categoryCompare != 0) {
+            return categoryCompare;
+        }
+        return a.getCode().compareToIgnoreCase(b.getCode());
+    }
 }
