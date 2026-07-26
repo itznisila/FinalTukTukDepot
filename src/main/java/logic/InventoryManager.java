@@ -19,4 +19,8 @@ public class InventoryManager {
     public List<Part> getParts() {
         return parts;
     }
+
+    public boolean addPart(Part p) {
+
+    }
 }
