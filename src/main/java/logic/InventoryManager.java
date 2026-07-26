@@ -35,5 +35,12 @@ public class InventoryManager {
             System.out.println("Rejected: quantity cannot be negative");
             return false;
         }
+
+        for (Part existing : parts) {
+            if (existing.getCode().equals(p.getCode())) {
+                System.out.println("Rejected: duplicate part code");
+                return false;
+            }
+        }
     }
 }
