@@ -1,9 +1,11 @@
 package gui;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import model.Dealer;
+import parser.DealerParser;
 
 import java.util.List;
 
@@ -27,4 +29,17 @@ public class DealersController {
         allDealers = loadAllDealers();
         handleSelectDealers();
     }
+
+    @FXML
+    private void handleSelectDealers() {
+        List<Dealer> chosen = selector.selectRandomDealers(allDealers, 4);
+        selector.sortByLocation(chosen);
+        dealersTable.setItems(FXCollections.observableArrayList(chosen));
+    }
+
+    private List<Dealer> loadAllDealers() {
+        DealerParser parser = new DealerParser();
+        return parser.parseFile("data/dealers_legacy.txt");
+    }
 }
+
