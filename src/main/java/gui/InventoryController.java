@@ -10,6 +10,7 @@ import logic.InventoryManager;
 import logic.LowStockMonitor;
 import logic.SearchFilter;
 import model.Part;
+import parser.InventoryParser;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -50,7 +51,10 @@ public class InventoryController {
 
     @FXML
     public void initialize() {
-        inventoryManager = new InventoryManager();
+        List<Part> loadedParts = new InventoryParser().parseFile("data/inventory_legacy.txt");
+        inventoryManager = new InventoryManager(loadedParts);
+
+        codeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("code"));
 
         codeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("code"));
         nameColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("name"));
