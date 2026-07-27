@@ -37,4 +37,15 @@ public class Cart {
             return false;
         }
 
+        if (qty <= 0) {
+            System.out.println("Rejected: quantity must be greater than 0");
+            return false;
+        }
+
+        if (qty > p.getQuantity()) {
+            System.out.println("Rejected: quantity exceeds available stock (" + p.getQuantity() + " available)");
+            return false;
+        }
+
+
     }
