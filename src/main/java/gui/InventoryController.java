@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -7,6 +8,7 @@ import javafx.scene.image.ImageView;
 import model.Part;
 
 import java.io.File;
+import java.util.List;
 
 public class InventoryController {
 
@@ -74,4 +76,11 @@ public class InventoryController {
         });
 
         refreshTable();
+    }
+
+    private void refreshTable() {
+        List<Part> parts = inventoryManager.getParts();
+        inventoryManager.sortByCategoryThenCode(parts);
+        inventoryTable.setItems(FXCollections.observableArrayList(parts));
+        updateSummary(parts);
     }
