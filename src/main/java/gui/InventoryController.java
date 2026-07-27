@@ -23,3 +23,14 @@ public class InventoryController {
     @FXML private Label totalQuantityLabel;
     @FXML private Label totalPriceLabel;
     @FXML private Label lowStockLabel;
+
+    @FXML private TextField codeField;
+    @FXML private TextField nameField;
+    @FXML private TextField brandField;
+    @FXML private TextField formCategoryField;
+    @FXML private TextField priceField;
+    @FXML private TextField quantityField;
+    @FXML private DatePicker datePicker;
+    @FXML private TextField imagePathField;
+    @FXML private TextField thresholdField;
+    @FXML private Label statusLabel;
