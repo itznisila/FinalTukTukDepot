@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import logic.LowStockMonitor;
 import logic.SearchFilter;
 import model.Part;
@@ -126,4 +127,14 @@ public class InventoryController {
         maxPriceField.clear();
         keywordField.clear();
         refreshTable();
+    }
+
+    @FXML
+    private void handleChooseImage() {
+        FileChooser chooser = new FileChooser();
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
+        File file = chooser.showOpenDialog(imagePathField.getScene().getWindow());
+        if (file != null) {
+            imagePathField.setText(file.getAbsolutePath());
+        }
     }
