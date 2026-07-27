@@ -223,3 +223,15 @@ public class InventoryController {
             statusLabel.setText("Delete failed.");
         }
     }
+
+    private void clearForm() {
+        codeField.clear();
+        nameField.clear();
+        brandField.clear();
+        formCategoryField.clear();
+        priceField.clear();
+        quantityField.clear();
+        datePicker.setValue(null);
+        imagePathField.clear();
+        thresholdField.clear();
+    }
