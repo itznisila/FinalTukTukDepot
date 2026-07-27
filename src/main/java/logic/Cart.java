@@ -47,5 +47,27 @@ public class Cart {
             return false;
         }
 
+        for (CartLine line : lines) {
+            if (line.getPart().getCode().equalsIgnoreCase(p.getCode())) {
+                int combinedQty = line.getQuantity() + qty;
+                if (combinedQty > p.getQuantity()) {
+                    System.out.println("Rejected: combined quantity exceeds available stock");
+                    return false;
+                }
+                line.setQuantity(combinedQty);
+                return true;
+            }
+        }
 
+        lines.add(new CartLine(p, qty));
+        return true;
     }
+
+    public boolean isEmpty() {
+        return lines.isEmpty();
+    }
+
+    public void clear() {
+        lines.clear();
+    }
+}
