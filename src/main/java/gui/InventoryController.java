@@ -154,3 +154,56 @@ public class InventoryController {
             int threshold = thresholdField.getText().trim().isEmpty()
                     ? Part.DEFAULT_LOW_STOCK_THRESHOLD
                     : Integer.parseInt(thresholdField.getText().trim());
+            if (code.isEmpty() || name.isEmpty() || category.isEmpty()) {
+                statusLabel.setText("Code, name and category are required.");
+                return;
+            }
+
+            Part newPart = new Part(code, name, brand, price, qty, category, date, imagePath, threshold);
+            boolean success = inventoryManager.addPart(newPart);
+
+            if (success) {
+                refreshTable();
+                statusLabel.setText("Part added successfully.");
+                clearForm();
+            } else {
+                statusLabel.setText("Add failed — check console (duplicate code, invalid price/quantity, etc).");
+            }
+        } catch (NumberFormatException e) {
+            statusLabel.setText("Price, quantity and threshold must be valid numbers.");
+        }
+    }
+
+    @FXML
+    private void handleUpdate() {
+        Part selected = inventoryTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            statusLabel.setText("Select a part in the table first.");
+            return;
+        }
+        try {
+            String code = selected.getCode(); // code itself isn't editable via this form
+            String name = nameField.getText().trim();
+            String brand = brandField.getText().trim();
+            String category = formCategoryField.getText().trim();
+            double price = Double.parseDouble(priceField.getText().trim());
+            int qty = Integer.parseInt(quantityField.getText().trim());
+            LocalDate date = datePicker.getValue() != null ? datePicker.getValue() : selected.getDateAdded();
+            String imagePath = imagePathField.getText().trim();
+            int threshold = thresholdField.getText().trim().isEmpty()
+                    ? Part.DEFAULT_LOW_STOCK_THRESHOLD
+                    : Integer.parseInt(thresholdField.getText().trim());
+
+            Part updated = new Part(code, name, brand, price, qty, category, date, imagePath, threshold);
+            boolean success = inventoryManager.updatePart(code, updated);
+
+            if (success) {
+                refreshTable();
+                statusLabel.setText("Part updated successfully.");
+            } else {
+                statusLabel.setText("Update failed — check console (invalid price/quantity or code not found).");
+            }
+        } catch (NumberFormatException e) {
+            statusLabel.setText("Price, quantity and threshold must be valid numbers.");
+        }
+    }
