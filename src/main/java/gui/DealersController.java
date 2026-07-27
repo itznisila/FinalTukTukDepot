@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import logic.Dealerselector;
 import model.Dealer;
 import parser.DealerParser;
 
@@ -18,7 +19,7 @@ public class DealersController {
     @FXML private TableColumn<Dealer, String> locationColumn;
 
     private List<Dealer> allDealers;
-    private final DealerSelector selector = new DealerSelector();
+    private final Dealerselector selector = new Dealerselector();
 
     @FXML
     public void initialize() {
