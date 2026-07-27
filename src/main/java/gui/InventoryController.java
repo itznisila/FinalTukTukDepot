@@ -11,6 +11,7 @@ import logic.SearchFilter;
 import model.Part;
 
 import java.io.File;
+import java.time.LocalDate;
 import java.util.List;
 
 public class InventoryController {
@@ -138,3 +139,18 @@ public class InventoryController {
             imagePathField.setText(file.getAbsolutePath());
         }
     }
+
+    @FXML
+    private void handleAdd() {
+        try {
+            String code = codeField.getText().trim();
+            String name = nameField.getText().trim();
+            String brand = brandField.getText().trim();
+            String category = formCategoryField.getText().trim();
+            double price = Double.parseDouble(priceField.getText().trim());
+            int qty = Integer.parseInt(quantityField.getText().trim());
+            LocalDate date = datePicker.getValue() != null ? datePicker.getValue() : LocalDate.now();
+            String imagePath = imagePathField.getText().trim();
+            int threshold = thresholdField.getText().trim().isEmpty()
+                    ? Part.DEFAULT_LOW_STOCK_THRESHOLD
+                    : Integer.parseInt(thresholdField.getText().trim());
