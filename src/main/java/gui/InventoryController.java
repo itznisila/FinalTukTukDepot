@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.LowStockMonitor;
+import logic.SearchFilter;
 import model.Part;
 
 import java.io.File;
@@ -97,4 +98,23 @@ public class InventoryController {
                     .append(",Qty: ").append(p.getQuantity()).append(")\n");
         }
         lowStockLabel.setText(sb.toString());
+    }
+
+    @FXML
+    private void handleSearch() {
+        String category = searchCategoryField.getText().trim();
+        String keyword = keywordField.getText().trim();
+        Double minPrice = null, maxPrice = null;
+        try {
+            if (!minPriceField.getText().trim().isEmpty())
+                minPrice = Double.parseDouble(minPriceField.getText().trim());
+            if (!maxPriceField.getText().trim().isEmpty())
+                maxPrice = Double.parseDouble(maxPriceField.getText().trim());
+        } catch (NumberFormatException e) {
+            statusLabel.setText("Min/Max price must be valid numbers.");
+            return;
+        }
+        List<Part> results = SearchFilter.search(inventoryManager.getParts(), category, minPrice, maxPrice, keyword);
+        inventoryTable.setItems(FXCollections.observableArrayList(results));
+        updateSummary(results);
     }
