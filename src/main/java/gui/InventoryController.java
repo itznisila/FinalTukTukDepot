@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import logic.InventoryManager;
 import logic.LowStockMonitor;
 import logic.SearchFilter;
 import model.Part;
@@ -235,3 +236,8 @@ public class InventoryController {
         imagePathField.clear();
         thresholdField.clear();
     }
+
+    public InventoryManager getInventoryManager() {
+        return inventoryManager;
+    }
+}
