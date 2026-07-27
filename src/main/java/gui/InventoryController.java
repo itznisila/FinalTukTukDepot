@@ -19,3 +19,7 @@ public class InventoryController {
     @FXML private TableColumn<Part, String> categoryColumn;
     @FXML private TableColumn<Part, Integer> thresholdColumn;
     @FXML private TableColumn<Part, String> imageColumn;
+
+    @FXML private Label totalQuantityLabel;
+    @FXML private Label totalPriceLabel;
+    @FXML private Label lowStockLabel;
