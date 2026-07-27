@@ -118,3 +118,12 @@ public class InventoryController {
         inventoryTable.setItems(FXCollections.observableArrayList(results));
         updateSummary(results);
     }
+
+    @FXML
+    private void handleClearSearch() {
+        searchCategoryField.clear();
+        minPriceField.clear();
+        maxPriceField.clear();
+        keywordField.clear();
+        refreshTable();
+    }
