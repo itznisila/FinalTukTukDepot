@@ -207,3 +207,19 @@ public class InventoryController {
             statusLabel.setText("Price, quantity and threshold must be valid numbers.");
         }
     }
+
+    @FXML
+    private void handleDelete() {
+        Part selected = inventoryTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
+            statusLabel.setText("Select a part in the table first.");
+            return;
+        }
+        boolean success = inventoryManager.deletePart(selected.getCode());
+        if (success) {
+            refreshTable();
+            statusLabel.setText("Part deleted.");
+        } else {
+            statusLabel.setText("Delete failed.");
+        }
+    }
