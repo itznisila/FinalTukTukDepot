@@ -11,6 +11,7 @@ import logic.LowStockMonitor;
 import logic.SearchFilter;
 import model.Part;
 import parser.InventoryParser;
+import util.AuditLogger;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -55,8 +56,6 @@ public class InventoryController {
         inventoryManager = new InventoryManager(loadedParts);
 
         codeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("code"));
-
-        codeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("code"));
         nameColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("name"));
         priceColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("price"));
         quantityColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
@@ -92,6 +91,10 @@ public class InventoryController {
         inventoryManager.sortByCategoryThenCode(parts);
         inventoryTable.setItems(FXCollections.observableArrayList(parts));
         updateSummary(parts);
+    }
+
+    public void refreshAfterExternalChange() {
+        refreshTable();
     }
 
     private void updateSummary(List<Part> parts) {
@@ -170,6 +173,7 @@ public class InventoryController {
             if (success) {
                 refreshTable();
                 statusLabel.setText("Part added successfully.");
+                AuditLogger.log("ADD", newPart.getCode(), newPart.getQuantity());
                 clearForm();
             } else {
                 statusLabel.setText("Add failed — check console (duplicate code, invalid price/quantity, etc).");
@@ -187,7 +191,7 @@ public class InventoryController {
             return;
         }
         try {
-            String code = selected.getCode(); // code itself isn't editable via this form
+            String code = selected.getCode();
             String name = nameField.getText().trim();
             String brand = brandField.getText().trim();
             String category = formCategoryField.getText().trim();
@@ -224,6 +228,7 @@ public class InventoryController {
         if (success) {
             refreshTable();
             statusLabel.setText("Part deleted.");
+            AuditLogger.log("DELETE", selected.getCode(), selected.getQuantity());
         } else {
             statusLabel.setText("Delete failed.");
         }
