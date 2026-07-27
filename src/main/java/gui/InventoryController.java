@@ -2,7 +2,11 @@ package gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Part;
+
+import java.io.File;
 
 public class InventoryController {
 
@@ -34,3 +38,40 @@ public class InventoryController {
     @FXML private TextField imagePathField;
     @FXML private TextField thresholdField;
     @FXML private Label statusLabel;
+
+    private InventoryManager inventoryManager;
+
+    @FXML
+    public void initialize() {
+        inventoryManager = new InventoryManager();
+
+        codeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("code"));
+        nameColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("name"));
+        priceColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("price"));
+        quantityColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
+        categoryColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("category"));
+        thresholdColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("lowStockThreshold"));
+        imageColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("imagePath"));
+
+
+        imageColumn.setCellFactory(col -> new TableCell<Part, String>() {
+            private final ImageView imageView = new ImageView();
+            @Override
+            protected void updateItem(String path, boolean empty) {
+                super.updateItem(path, empty);
+                if (empty || path == null || path.isEmpty()) {
+                    setGraphic(null);
+                } else {
+                    File file = new File(path);
+                    if (file.exists()) {
+                        imageView.setImage(new Image(file.toURI().toString(), 40, 40, true, true));
+                        setGraphic(imageView);
+                    } else {
+                        setGraphic(null);
+                    }
+                }
+            }
+        });
+
+        refreshTable();
+    }
