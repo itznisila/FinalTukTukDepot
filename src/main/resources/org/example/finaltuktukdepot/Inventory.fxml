@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -83,7 +84,6 @@
                         <TextField fx:id="formCategoryField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="priceField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <TextField fx:id="quantityField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="thresholdField" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                            <children>
@@ -91,6 +91,7 @@
                               <Button fx:id="chooseImageButton" mnemonicParsing="false" onAction="#handleChooseImage" text="Choose image" />
                            </children>
                         </HBox>
+                        <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                      </children>
                   </GridPane>
                   <HBox prefHeight="100.0" prefWidth="200.0">
