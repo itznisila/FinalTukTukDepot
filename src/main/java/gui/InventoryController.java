@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import logic.LowStockMonitor;
 import model.Part;
 
 import java.io.File;
@@ -83,4 +84,17 @@ public class InventoryController {
         inventoryManager.sortByCategoryThenCode(parts);
         inventoryTable.setItems(FXCollections.observableArrayList(parts));
         updateSummary(parts);
+    }
+
+    private void updateSummary(List<Part> parts) {
+        totalQuantityLabel.setText("Total Quantity: " + inventoryManager.getTotalItemCount());
+        totalPriceLabel.setText("Total Price: " + inventoryManager.getTotalInventoryValue());
+
+        List<Part> lowStock = LowStockMonitor.getLowStockItems(parts);
+        StringBuilder sb = new StringBuilder();
+        for (Part p : lowStock) {
+            sb.append(p.getCode()).append("(").append(p.getName())
+                    .append(",Qty: ").append(p.getQuantity()).append(")\n");
+        }
+        lowStockLabel.setText(sb.toString());
     }
